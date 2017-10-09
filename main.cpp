@@ -28,10 +28,10 @@ public:
     bool operator==(const Rational& other);
     bool operator!=(const Rational& other);
 
-    Rational operator++();
+    Rational& operator++();
     Rational operator++(int);
 
-    Rational operator--();
+    Rational& operator--();
     Rational operator--(int);
 };
 
@@ -105,7 +105,7 @@ bool Rational::operator!=(const Rational &other) {
     return (x_ / firstGcd != other.x_ / secondGcd || y_ / firstGcd != other.y_ / secondGcd);
 }
 
-Rational Rational::operator++() {
+Rational& Rational::operator++() {
     x_ += y_;
     return *this;
 }
@@ -116,7 +116,7 @@ Rational Rational::operator++(int) {
     return tmp;
 }
 
-Rational Rational::operator--() {
+Rational& Rational::operator--() {
     x_ -= y_;
     return *this;
 }
@@ -131,5 +131,5 @@ int main() {
     Rational r(10, 5), q(15, 2);
     r = ++r + q;
     std::cout << r.numerator() << " " << r.denominator() << '\n' << q.numerator() << " " <<
-               q.denominator() << '\n';
+              q.denominator() << '\n';
 }
